@@ -28,6 +28,7 @@ func (app *application) registerRoutes() *echo.Echo {
 	{
 		app.registerHealthCheckRoutes(v1)
 		app.registerMemberRoutes(v1)
+		app.registerSportRoutes(v1)
 	}
 
 	return e
@@ -85,11 +86,14 @@ func main() {
 	app.logger.WriteInfo("Database connected", nil)
 
 	memberStore := postgres.NewMemberStore(conn)
+	sportStore := postgres.NewSportStore(conn)
 
 	storeRegistry := struct {
 		*postgres.MemberStore
+		*postgres.SportStore
 	}{
 		memberStore,
+		sportStore,
 	}
 	app.store = storeRegistry
 

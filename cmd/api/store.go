@@ -16,6 +16,15 @@ type memberStore interface {
 	DeleteMember(ctx context.Context, id uuid.UUID) error
 }
 
+type sportStore interface {
+	AddSport(ctx context.Context, sport *model.Sport) error
+	GetSportByID(ctx context.Context, id uuid.UUID) (*model.Sport, error)
+	GetAllSports(ctx context.Context) ([]*model.Sport, error)
+	UpdateSport(ctx context.Context, sport *model.Sport) error
+	DeleteSport(ctx context.Context, id uuid.UUID) error
+}
+
 type store interface {
 	memberStore
+	sportStore
 }

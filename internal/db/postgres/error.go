@@ -7,15 +7,18 @@ import (
 )
 
 var (
-	ErrMemberAlreadyExists   = errors.New("member already exists")
-	ErrMemberNotFound        = errors.New("member not found")
-	ErrMissingRequiredField  = errors.New("missing required field")
+	ErrMemberAlreadyExists  = errors.New("member already exists")
+	ErrMemberNotFound       = errors.New("member not found")
+	ErrMissingRequiredField = errors.New("missing required field")
+
+	ErrSportAlreadyExists = errors.New("sport already exists")
+	ErrSportNotFound      = errors.New("sport not found")
 )
 
 const (
 	// PostgreSQL error codes
-	PgUniqueViolation    = "23505" // unique_violation
-	PgNotNullViolation   = "23502" // not_null_violation
+	PgUniqueViolation     = "23505" // unique_violation
+	PgNotNullViolation    = "23502" // not_null_violation
 	PgForeignKeyViolation = "23503" // foreign_key_violation
 )
 
