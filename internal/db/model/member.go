@@ -2,7 +2,6 @@ package model
 
 import (
 	"regexp"
-	"time"
 
 	"github.com/google/uuid"
 )
@@ -25,7 +24,6 @@ type Member struct {
 	Email       string       `db:"email"`
 	PhoneNumber string       `db:"phone"`
 	Address     string       `db:"address"`
-	JoinDate    time.Time    `db:"join_date"`
 	Status      MemberStatus `db:"status"`
 }
 

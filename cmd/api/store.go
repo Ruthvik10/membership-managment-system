@@ -24,7 +24,12 @@ type sportStore interface {
 	DeleteSport(ctx context.Context, id uuid.UUID) error
 }
 
+type membershipStore interface {
+	AddMembership(ctx context.Context, membership *model.Membership) error
+}
+
 type store interface {
 	memberStore
 	sportStore
+	membershipStore
 }

@@ -32,7 +32,6 @@ func (s *MemberStore) AddMember(ctx context.Context, member *model.Member) error
 		member.Email,
 		member.PhoneNumber,
 		member.Address,
-		member.JoinDate,
 		member.Status,
 	}
 
@@ -42,7 +41,6 @@ func (s *MemberStore) AddMember(ctx context.Context, member *model.Member) error
 		&member.Email,
 		&member.PhoneNumber,
 		&member.Address,
-		&member.JoinDate,
 		&member.Status,
 	); err != nil {
 		switch {
@@ -70,7 +68,6 @@ func (s *MemberStore) GetMemberByID(ctx context.Context, id uuid.UUID) (*model.M
 		&member.Email,
 		&member.PhoneNumber,
 		&member.Address,
-		&member.JoinDate,
 		&member.Status,
 	); err != nil {
 		switch {
@@ -96,7 +93,6 @@ func (s *MemberStore) GetMemberByEmail(ctx context.Context, email string) (*mode
 		&member.Email,
 		&member.PhoneNumber,
 		&member.Address,
-		&member.JoinDate,
 		&member.Status,
 	); err != nil {
 		switch {
@@ -129,7 +125,6 @@ func (s *MemberStore) GetAllMembers(ctx context.Context) ([]*model.Member, error
 			&member.Email,
 			&member.PhoneNumber,
 			&member.Address,
-			&member.JoinDate,
 			&member.Status,
 		); err != nil {
 			return nil, fmt.Errorf("failed to scan member: %w", err)
@@ -154,7 +149,6 @@ func (s *MemberStore) UpdateMember(ctx context.Context, member *model.Member) er
 		member.Email,
 		member.PhoneNumber,
 		member.Address,
-		member.JoinDate,
 		member.Status,
 		member.ID,
 	}
@@ -164,7 +158,6 @@ func (s *MemberStore) UpdateMember(ctx context.Context, member *model.Member) er
 		&member.Email,
 		&member.PhoneNumber,
 		&member.Address,
-		&member.JoinDate,
 		&member.Status,
 	)
 	if err != nil {

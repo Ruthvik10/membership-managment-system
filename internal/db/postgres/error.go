@@ -13,6 +13,9 @@ var (
 
 	ErrSportAlreadyExists = errors.New("sport already exists")
 	ErrSportNotFound      = errors.New("sport not found")
+
+	ErrMembershipAlreadyExists = errors.New("membership already exists")
+	ErrMembershipNotFound      = errors.New("membership not found")
 )
 
 const (

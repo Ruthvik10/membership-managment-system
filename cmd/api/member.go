@@ -65,7 +65,6 @@ func (app *application) addMember(c echo.Context) error {
 		Email:       req.Email,
 		PhoneNumber: req.PhoneNumber,
 		Address:     req.Address,
-		JoinDate:    req.JoinDate,
 		Status:      model.MemberStatusActive,
 	}
 
@@ -108,7 +107,6 @@ func (app *application) addMember(c echo.Context) error {
 		Email:       member.Email,
 		PhoneNumber: member.PhoneNumber,
 		Address:     member.Address,
-		JoinDate:    member.JoinDate,
 		Status:      model.MemberStatusMap[member.Status],
 	}
 
@@ -160,7 +158,6 @@ func (app *application) getMemberByID(c echo.Context) error {
 		Email:       member.Email,
 		PhoneNumber: member.PhoneNumber,
 		Address:     member.Address,
-		JoinDate:    member.JoinDate,
 		Status:      model.MemberStatusMap[member.Status],
 	}
 
@@ -196,7 +193,6 @@ func (app *application) getMemberByEmail(c echo.Context) error {
 		Email:       member.Email,
 		PhoneNumber: member.PhoneNumber,
 		Address:     member.Address,
-		JoinDate:    member.JoinDate,
 		Status:      model.MemberStatusMap[member.Status],
 	}
 
@@ -221,7 +217,6 @@ func (app *application) getAllMembers(c echo.Context) error {
 			Email:       member.Email,
 			PhoneNumber: member.PhoneNumber,
 			Address:     member.Address,
-			JoinDate:    member.JoinDate,
 			Status:      model.MemberStatusMap[member.Status],
 		}
 	}
@@ -289,9 +284,6 @@ func (app *application) updateMember(c echo.Context) error {
 	if req.Address != nil {
 		member.Address = *req.Address
 	}
-	if req.JoinDate != nil {
-		member.JoinDate = *req.JoinDate
-	}
 	if req.Status != nil {
 		member.Status = *req.Status
 	}
@@ -338,7 +330,6 @@ func (app *application) updateMember(c echo.Context) error {
 		Email:       member.Email,
 		PhoneNumber: member.PhoneNumber,
 		Address:     member.Address,
-		JoinDate:    member.JoinDate,
 		Status:      model.MemberStatusMap[member.Status],
 	}
 

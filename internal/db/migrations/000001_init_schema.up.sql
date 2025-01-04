@@ -6,24 +6,27 @@ CREATE TABLE members (
     email TEXT UNIQUE NOT NULL,
     phone TEXT UNIQUE NOT NULL,
     address TEXT,
-    join_date TIMESTAMPTZ,
     status INTEGER NOT NULL DEFAULT 1
 );
 
 CREATE TABLE sports (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id SERIAL PRIMARY KEY,
     name TEXT UNIQUE NOT NULL,
     description TEXT
 );
 
 CREATE TABLE memberships (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    member_id UUID REFERENCES members(id),
-    sport_id UUID REFERENCES sports(id) ,
-    start_date DATE DEFAULT CURRENT_DATE,
-    due_date DATE NOT NULL,
-    status INTEGER NOT NULL DEFAULT 1
+    member_id UUID REFERENCES members(id) ON DELETE CASCADE,
+    sport_id SERIAL REFERENCES sports(id) ON DELETE CASCADE,
+    type TEXT NOT NULL CHECK(type IN ('membership', 'training')),
+    start_date TIMESTAMPTZ NOT NULL,
+    due_date TIMESTAMPTZ NOT NULL,
+    status INTEGER NOT NULL DEFAULT 1,
+    fees NUMERIC(10, 2) NOT NULL
 );
+
+ALTER TABLE memberships ADD UNIQUE (member_id, sport_id, type);
 
 CREATE TABLE payments (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
